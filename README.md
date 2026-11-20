@@ -226,9 +226,8 @@ Measures created:
 
 The semantic model was used as the data source for the Power BI report through a **Direct Lake connection**.
 
-**[INSERT SCREENSHOT: Semantic Model – Star Schema / Model View]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/de41c9ef-f9f3-4879-bebd-abf97ad95417" />
 
-**[INSERT SCREENSHOT: Semantic Model Showing DAX Measures]**
 
 ## 8. Power BI – Sales Analytics Report
 
@@ -255,13 +254,8 @@ The report contains a single page, **Sales Analytics Overview**, with the follow
 
 Date, Month, Quarter, and Year slicers enable users to explore the report across different time periods.
 
-**[INSERT SCREENSHOT: Complete Sales Analytics Report]**
+<img width="1253" height="787" alt="image" src="https://github.com/user-attachments/assets/cd6a3768-4377-434f-ac70-29a0bbdacdc3" />
 
-**[INSERT SCREENSHOT: KPI Cards and Monthly Trend]**
-
-**[INSERT SCREENSHOT: Regional and Product Category Analysis]**
-
-**[INSERT SCREENSHOT: Top 10 Customers Table]**
 
 ## 9. Key Business Insights
 
