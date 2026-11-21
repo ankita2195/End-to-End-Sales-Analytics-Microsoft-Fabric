@@ -255,7 +255,7 @@ The report highlights the following observations:
 - **Product Performance:** Electronics generates the highest revenue, while Office Supplies records the highest quantity sold.
 - **Regional Performance:** North and West contribute approximately ₹3.6M each, followed by East at ₹3.5M and South at ₹2.9M.
 - **Monthly Performance:** October records the highest monthly revenue at approximately ₹1.4M, while September records the lowest at approximately ₹0.9M.
-- **Customer Performance:** Vivek Chopra ranks first among customers, contributing approximately ₹533K in revenue.
+- **Customer Performance:** Vivek Chopra ranks first among customers, contributing approximately ₹533K in revenue. While, Sneha Gupta (Rank 2) placed the highest number of orders.
 
 *Values are rounded as displayed in the Power BI report.*
 
