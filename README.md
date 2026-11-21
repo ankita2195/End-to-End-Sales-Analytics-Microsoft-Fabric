@@ -8,7 +8,7 @@ This project implements an end-to-end sales analytics workflow using Microsoft F
 
 The primary focus is on exploring Microsoft Fabric's data engineering and analytics capabilities, including Lakehouse, Data Factory, Dataflows Gen2, Notebooks, Fabric Warehouse, and Direct Lake.
 
-### Technology Stack
+### Tech Stack
 
 - **Microsoft Fabric:** Lakehouse, Data Factory, Dataflows Gen2, Notebooks, Warehouse, Semantic Model
 - **Languages:** PySpark, SQL, DAX
@@ -22,7 +22,7 @@ The project follows an end-to-end architecture covering data ingestion, transfor
 <img width="767" height="862" alt="Screenshot 2026-09-27 152249" src="https://github.com/user-attachments/assets/9664fc25-53ae-4c48-ab7f-1d083ee3c4b2" />
 
 
-## 2. Data Ingestion – Fabric Data Factory
+## 2. Data Ingestion - Fabric Data Factory
 
 The source dataset, `sales_data.csv`, was ingested from an HTTP source using a Fabric Data Factory pipeline named `pl_ingest_sales`.
 
@@ -36,16 +36,14 @@ The pipeline contains the following activities:
 
 These activities orchestrate the ingestion and transformation workflow across the Lakehouse and Warehouse.
 
-<img width="1534" height="814" alt="image" src="https://github.com/user-attachments/assets/b41e9ba2-57ab-4e2f-8461-cf8a3e9bbb05" />
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/403e6aaf-d93e-43d5-93e7-1f8f61abeb8e" />
 
 
-## 3. Lakehouse – Medallion Architecture
+## 3. Lakehouse - Medallion Architecture
 
 A Fabric Lakehouse named `lh_sales` was used to store and process the sales data using the Bronze, Silver, and Gold layers.
 
-### Bronze Layer – Raw Data Ingestion
+### Bronze Layer - Raw Data Ingestion
 
 The raw CSV file was loaded into the Lakehouse using a PySpark notebook named `nb_load_to_delta`.
 
@@ -58,11 +56,7 @@ The Bronze layer retains the initially ingested data before the subsequent trans
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/970eb1ff-ba23-4cae-bc38-a9b114163655" />
 
-
-
-**[INSERT SCREENSHOT: nb_load_to_delta Notebook Code and Execution Output]**
-
-### Silver Layer – Data Transformation
+### Silver Layer - Data Transformation
 
 The Bronze data was transformed using the notebook `nb_transform_bronze_to_silver`.
 
@@ -78,12 +72,7 @@ The resulting Silver table provides a standardised dataset for downstream analyt
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a3d148c7-6d88-4382-859f-dfbceb57527a" />
 
-
-**[INSERT SCREENSHOT: nb_transform_bronze_to_silver Notebook – Transformations]**
-
-**[INSERT SCREENSHOT: Silver Table Schema / Execution Output]**
-
-### Gold Layer – Aggregated Sales Data
+### Gold Layer - Aggregated Sales Data
 
 The Gold layer was created using the notebook `nb_build_gold_layer`, which reads the `silver_sales` Delta table.
 
@@ -101,9 +90,8 @@ The aggregated output was stored as a Delta table named `gold_sales_summary`.
 
 Its grain is one record per region and year-month combination.
 
-**[INSERT SCREENSHOT: Gold Layer Table in Lakehouse]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cc67db6b-3058-4f04-a704-1a4c7c39ad54" />
 
-**[INSERT SCREENSHOT: nb_build_gold_layer Notebook – Aggregation Logic and Output]**
 
 ## 4. Dataflows Gen2
 
@@ -112,9 +100,10 @@ Dataflows Gen2 was used for data preparation, specifically:
 - Changing column data types.
 - Filtering rows.
 
-**[INSERT SCREENSHOT: Dataflows Gen2 Transformation Steps]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1147cfe-7f5e-4a3a-831a-b6ee2a70ff48" />
 
-## 5. Dimensional Modelling – PySpark Notebooks
+
+## 5. Dimensional Modelling - PySpark Notebooks
 
 Dimension and fact tables were created separately using PySpark notebooks. The dimension-building notebook was executed independently rather than as an activity in the pipeline.
 
@@ -131,6 +120,8 @@ Three dimension tables were created from distinct records in the Silver dataset:
 Surrogate keys were assigned using PySpark's `monotonically_increasing_id()` function.
 
 The customer dimension uses distinct combinations of customer name and region.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/80ab8d18-84a0-4584-9a05-94ac72772486" />
 
 ### Fact Table
 
@@ -149,13 +140,10 @@ The final fact table contains:
 - quantity
 - revenue_usd
 
-**[INSERT SCREENSHOT: Dimension-Building Notebook Code]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db224f3f-52b2-4e06-9d9d-c672c2f1d2aa" />
 
-**[INSERT SCREENSHOT: Dimension Tables in Lakehouse]**
 
-**[INSERT SCREENSHOT: Fact Table Creation Notebook Code and Output]**
-
-## 6. Fabric Warehouse – SQL-Based Data Warehousing
+## 6. Fabric Warehouse - SQL-Based Data Warehousing
 
 A Fabric Warehouse named `wh_sales` was used to implement the dimensional model.
 
@@ -186,6 +174,9 @@ It includes:
 
 The date dimension was populated for the period from January 2023 to December 2024.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/de3ae679-8889-418e-bb8c-d9615776ecc2" />
+
+
 ### Additional SQL Development
 
 The project also included SQL development involving:
@@ -193,13 +184,13 @@ The project also included SQL development involving:
 - A stored procedure: `analytics.usp_GetTopCustomers`, designed to retrieve the top customers based on revenue, with a configurable number of results.
 - A view: `analytics.vw_sales_by_region`, designed to aggregate sales by region and year-month.
 
-**[INSERT SCREENSHOT: Fabric Warehouse Showing Tables]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8127bad2-1bc4-488d-96db-9b36182cbd79" />
 
-**[INSERT SCREENSHOT: SQL Script – CTAS Statements and Date Dimension]**
 
-**[INSERT SCREENSHOT: Stored Procedure and View SQL Scripts]**
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d1cc19b8-ec34-4394-84b9-dcae447b77ab" />
 
-## 7. Semantic Model – Star Schema
+
+## 7. Semantic Model - Star Schema
 
 A Fabric semantic model named `SM_Sales_Analytics` was created using the Warehouse tables.
 
@@ -229,7 +220,7 @@ The semantic model was used as the data source for the Power BI report through a
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/de41c9ef-f9f3-4879-bebd-abf97ad95417" />
 
 
-## 8. Power BI – Sales Analytics Report
+## 8. Power BI - Sales Analytics Report
 
 A Power BI report named `Sales Report` was developed using the Fabric semantic model.
 
@@ -319,6 +310,3 @@ Through this project, I gained practical experience with:
 - Building a Fabric semantic model with DAX measures.
 - Connecting Power BI reports using Direct Lake.
 
----
-
-**Project Focus:** Microsoft Fabric | Data Engineering | Data Warehousing | Dimensional Modelling | Business Intelligence
