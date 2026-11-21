@@ -293,7 +293,7 @@ Sales-Analytics-Microsoft-Fabric/
 │   └── create_views.sql
 │
 └── Dashboard/
-    └── Sales_Analytics_Report.pdf
+    └── Sales_Report.pdf
 ```
 
 ## 11. Key Learnings
