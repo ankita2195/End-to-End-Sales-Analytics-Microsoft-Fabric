@@ -270,15 +270,13 @@ Sales-Analytics-Microsoft-Fabric/
 │   └── fabric_architecture.png
 │
 ├── Screenshots/
-│   ├── Fabric_Workspace/
 │   ├── Data_Pipeline/
-│   ├── Lakehouse/
 │   ├── Dataflows_Gen2/
-│   ├── Notebooks/
-│   ├── Warehouse/
+│   ├── Fabric_Workspace/
+│   ├── Lakehouse/
+│   ├── PowerBI Report/
 │   ├── Star_Schema/
-│   ├── Semantic_Model/
-│   └── PowerBI_Report/
+│   └── Warehouse/
 │
 ├── Notebooks/
 │   ├── nb_load_to_delta.ipynb
@@ -287,10 +285,13 @@ Sales-Analytics-Microsoft-Fabric/
 │   └── nb_build_tables.ipynb
 │
 ├── SQL/
+│   ├── create_dim_customer.sql
 │   ├── create_dim_date.sql
-│   ├── create_warehouse_tables.sql
-│   ├── stored_procedure.sql
-│   └── create_views.sql
+│   ├── create_dim_product.sql
+│   ├── create_dim_region.sql
+│   ├── create_fact_sales.sql
+│   ├── create_views.sql
+│   └── stored_procedure.sql
 │
 └── Dashboard/
     └── Sales_Report.pdf
